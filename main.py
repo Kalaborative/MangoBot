@@ -14,7 +14,7 @@ def home():
 
 def run():
 	port = int(environ.get("PORT", 5000))
-	app.run(host='0.0.0.0', port=port, debug=True)
+	app.run(host='0.0.0.0', port=port)
 
 def keep_alive():
     t = Thread(target=run)
