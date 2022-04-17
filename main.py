@@ -1,4 +1,5 @@
 import discord
+from discord.ext import commands
 import requests
 import json
 from random import choice
@@ -21,6 +22,8 @@ def keep_alive():
     t.start()
 
 db = {}
+
+bot = commands.Bot('!')
 
 client = discord.Client()
 sad_words = ["sad", "depressed", "unhappy", "angry", "miserable"]
@@ -105,4 +108,5 @@ async def on_message(message):
             await message.channel.send('Responding is off!')
 
 keep_alive()
+bot.load_extension('jishaku')
 client.run('OTY1MzA4MDQ1OTI2MjAzNDkz.YlxTLA.XTe-rt2ltE0ZpPJyjUoO0jF4BnI')
