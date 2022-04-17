@@ -4,6 +4,7 @@ import json
 from random import choice
 from flask import Flask
 from threading import Thread
+from os import environ
 
 app = Flask('')
 
