@@ -2,6 +2,22 @@ import discord
 import requests
 import json
 from random import choice
+from flask import Flask
+from threading import Thread
+
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "Hello. I am alive!"
+
+def run():
+	port = int(environ.get("PORT", 5000))
+	app.run(host='0.0.0.0', port=port, debug=True)
+
+def keep_alive():
+    t = Thread(target=run)
+    t.start()
 
 db = {}
 
@@ -87,4 +103,5 @@ async def on_message(message):
             db['responding'] = False
             await message.channel.send('Responding is off!')
 
+keep_alive()
 client.run('OTY1MzA4MDQ1OTI2MjAzNDkz.YlxTLA.XTe-rt2ltE0ZpPJyjUoO0jF4BnI')
