@@ -29,13 +29,15 @@ bot = commands.Bot('`', intents=intents)
 
 client = discord.Client(intents=intents)
 
-@client.event
+@bot.event
 async def on_ready():
-    print(f"We have logged in as {client.user}")
+    ch = bot.get_channel(965308897256702046)
+    await ch.send(f"We have logged in as {client.user}")
+    # print(f"We have logged in as {client.user}")
 
-    await client.change_presence(activity=discord.Game('a game'))
+    await bot.change_presence(activity=discord.Game('a game'))
 
 keep_alive()
 bot.load_extension('jishaku')
 bot.run('OTY1MzA4MDQ1OTI2MjAzNDkz.YlxTLA.XTe-rt2ltE0ZpPJyjUoO0jF4BnI')
-client.run('OTY1MzA4MDQ1OTI2MjAzNDkz.YlxTLA.XTe-rt2ltE0ZpPJyjUoO0jF4BnI')
+# client.run('OTY1MzA4MDQ1OTI2MjAzNDkz.YlxTLA.XTe-rt2ltE0ZpPJyjUoO0jF4BnI')
