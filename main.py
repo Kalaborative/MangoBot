@@ -31,7 +31,7 @@ client = discord.Client()
 async def on_ready():
     print(f"We have logged in as {client.user}")
 
-    await client.change_presence(activity=discord.Game('a game'))
+    # await client.change_presence(activity=discord.Game('a game'))
 
 keep_alive()
 bot.load_extension('jishaku')
