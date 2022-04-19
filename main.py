@@ -23,15 +23,17 @@ def keep_alive():
 
 db = {}
 
-bot = commands.Bot('`')
+intents = discord.Intents.default()
 
-client = discord.Client()
+bot = commands.Bot('`', intents=intents)
+
+client = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():
     print(f"We have logged in as {client.user}")
 
-    # await client.change_presence(activity=discord.Game('a game'))
+    await client.change_presence(activity=discord.Game('a game'))
 
 keep_alive()
 bot.load_extension('jishaku')
