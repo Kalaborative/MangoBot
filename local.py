@@ -9,19 +9,19 @@ from os import environ
 # import jishaku
 import asyncio
 
-app = Flask('')
+# app = Flask('')
 
-@app.route('/')
-def home():
-    return "Hello. I am alive!"
+# @app.route('/')
+# def home():
+#     return "Hello. I am alive!"
 
-def run():
-	port = int(environ.get("PORT", 5000))
-	app.run(host='0.0.0.0', port=port)
+# def run():
+# 	port = int(environ.get("PORT", 5000))
+# 	app.run(host='0.0.0.0', port=port)
 
-def keep_alive():
-    t = Thread(target=run)
-    t.start()
+# def keep_alive():
+#     t = Thread(target=run)
+#     t.start()
 
 db = {}
 
@@ -54,8 +54,7 @@ class MyBot(commands.Bot):
         ch = self.get_channel(965308897256702046)
         await ch.send(f"logged in as {self.user}")
         # print("Ready!")
-
-keep_alive()
+# keep_alive()
 # bot.load_extension('jishaku')
 bot = MyBot()
 bot.run('OTY1MzA4MDQ1OTI2MjAzNDkz.YlxTLA.XTe-rt2ltE0ZpPJyjUoO0jF4BnI')
