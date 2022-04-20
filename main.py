@@ -7,6 +7,7 @@ from random import choice
 from threading import Thread
 from os import environ
 # import jishaku
+from flask import Flask
 import asyncio
 
 app = Flask('')
