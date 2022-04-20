@@ -32,10 +32,10 @@ client = discord.Client(intents=intents)
 @bot.event
 async def on_ready():
     ch = bot.get_channel(965308897256702046)
-    await ch.send(f"We have logged in as {client.user}")
+    await ch.send(f"We have logged in as {bot.user}")
     # print(f"We have logged in as {client.user}")
 
-    await bot.change_presence(activity=discord.Game('a game'))
+    await bot.change_presence(activity=discord.Game(f'on {len(bot.guilds)} {"servers" if len(bot.guilds) > 1 else "server"}'))
 
 keep_alive()
 bot.load_extension('jishaku')
