@@ -9,7 +9,7 @@ chardet==4.0.0
 charset-normalizer==2.0.12
 click==8.1.2
 colorama==0.4.4
-discord.py @ file:///C:/Users/kalab/discord.py
+discord.py==2.0.0a4150+g84e6b928
 Flask==2.1.1
 idna==3.3
 import-expression==1.1.4
