@@ -6,6 +6,7 @@ from random import choice
 from flask import Flask
 from threading import Thread
 from os import environ
+import asyncio
 
 app = Flask('')
 
@@ -35,9 +36,24 @@ async def on_ready():
     await ch.send(f"We have logged in as {bot.user}")
     # print(f"We have logged in as {client.user}")
 
-    await bot.change_presence(activity=discord.Game(f'on {len(bot.guilds)} {"servers" if len(bot.guilds) > 1 else "server"}'))
+    # await bot.change_presence(activity=discord.Game())
+
+async def ch_pr():
+    await bot.wait_until_ready()
+    statuses = [
+        f'on {len(bot.guilds)} {"servers" if len(bot.guilds) > 1 else "server"}',
+        'with cute cats',
+        'with a mango',
+        'discord.py'
+    ]
+
+    while not bot.is_closed():
+        status = choice(statuses)
+        await bot.change_presence(activity=discord.Game(name=status))
+        await asyncio.sleep(10)
 
 keep_alive()
 bot.load_extension('jishaku')
+bot.loop.create_task(ch_pr())
 bot.run('OTY1MzA4MDQ1OTI2MjAzNDkz.YlxTLA.XTe-rt2ltE0ZpPJyjUoO0jF4BnI')
 # client.run('OTY1MzA4MDQ1OTI2MjAzNDkz.YlxTLA.XTe-rt2ltE0ZpPJyjUoO0jF4BnI')
