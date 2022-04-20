@@ -28,7 +28,7 @@ intents = discord.Intents.default()
 
 bot = commands.Bot('`', intents=intents)
 
-client = discord.Client(intents=intents)
+# client = discord.Client(intents=intents)
 
 @bot.event
 async def on_ready():
