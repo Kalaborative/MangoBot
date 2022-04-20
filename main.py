@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from discord.ui import Button 
+from discord.ui import Button, View
 import requests
 import json
 from random import choice
@@ -59,5 +59,12 @@ class MyBot(commands.Bot):
 keep_alive()
 # bot.load_extension('jishaku')
 bot = MyBot()
+
+@bot.command
+async def hello(ctx):
+    button = Button(label='Click me!', style=discord.ButtonStyle.green)
+    view = View()
+    view.add_item(button)
+    await ctx.send("Hi!", view=view)
 bot.run('OTY1MzA4MDQ1OTI2MjAzNDkz.YlxTLA.XTe-rt2ltE0ZpPJyjUoO0jF4BnI')
 # client.run('OTY1MzA4MDQ1OTI2MjAzNDkz.YlxTLA.XTe-rt2ltE0ZpPJyjUoO0jF4BnI')
