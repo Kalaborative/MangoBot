@@ -66,5 +66,4 @@ async def hello(ctx):
     view = View()
     view.add_item(button)
     await ctx.send("Hi!", view=view)
-bot.run('OTY1MzA4MDQ1OTI2MjAzNDkz.YlxTLA.XTe-rt2ltE0ZpPJyjUoO0jF4BnI')
-# client.run('OTY1MzA4MDQ1OTI2MjAzNDkz.YlxTLA.XTe-rt2ltE0ZpPJyjUoO0jF4BnI')
+bot.run('token')

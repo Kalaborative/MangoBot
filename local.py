@@ -85,5 +85,4 @@ async def bal(ctx):
     myEmbed = discord.Embed(color=discord.Color.blue(), title=f'{ctx.author}', description=f'Wallet: {wallet} | Bank {bank}')
     await ctx.send(embed=myEmbed)
 
-bot.run('OTY1MzA4MDQ1OTI2MjAzNDkz.YlxTLA.XTe-rt2ltE0ZpPJyjUoO0jF4BnI')
-# client.run('OTY1MzA4MDQ1OTI2MjAzNDkz.YlxTLA.XTe-rt2ltE0ZpPJyjUoO0jF4BnI')
+bot.run('token')
