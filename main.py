@@ -29,6 +29,12 @@ def keep_alive():
 # Better to keep the token away from main.py
 # make sure the config.toml file is in your
 # .gitignore!
+
+with open('config.toml', 'w') as token_file:
+    access_token = os.environ['ACCESS_TOKEN']
+    to_write = ['[startup]', '\ntoken = "{}"'.format(access_token)]
+    token_file.writelines(to_write)
+
 file_path = Path(__file__).resolve().parent / "config.toml"
 with open(file_path, "r") as file:
     config_file = toml.load(file)
@@ -39,7 +45,7 @@ class MyBot(commands.Bot):
         super().__init__(
             # Might as well use all intents, as this is a small bot
             intents=discord.Intents.all(),
-            command_prefix='>'
+            command_prefix='!'
         )
 
         # Initialising bot variables, these can be accessed
@@ -53,7 +59,7 @@ class MyBot(commands.Bot):
         # Waiting for the cache to populate
         await self.wait_until_ready()
 
-        ch = self.get_channel(964022099150782494)
+        ch = self.get_channel(965308897256702046)
         await ch.send(f"Logged in as {self.user}")
 
     async def setup_hook(self):

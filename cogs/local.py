@@ -33,6 +33,16 @@ class Local(commands.Cog):
         )
         await ctx.send(embed=e)
 
+    @commands.command()
+    async def addbal(self, ctx, amt: int):
+        q_author = ctx.author
+        if ctx.author not in self.bot.coin_amts.keys():
+            self.bot.coin_amts[q_author] = [0, 0]
+        
+        currentBal = self.bot.coin_amts[q_author][0]
+        newBal = currentBal + amt
+        self.bot.coin_amts[q_author][0] = newBal
+        await ctx.send('{} coins added!'.format(amt))
 
 async def setup(bot):
     await bot.add_cog(Local(bot))
