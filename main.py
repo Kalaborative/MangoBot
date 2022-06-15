@@ -2,7 +2,8 @@ import os
 import asyncio
 from pathlib import Path
 from threading import Thread
-
+from datetime import datetime
+import traceback
 import toml
 import discord
 from discord.ext import commands
@@ -45,7 +46,8 @@ class MyBot(commands.Bot):
         super().__init__(
             # Might as well use all intents, as this is a small bot
             intents=discord.Intents.all(),
-            command_prefix='!'
+            command_prefix='!',
+            case_insensitive=True
         )
 
         # Initialising bot variables, these can be accessed
@@ -60,7 +62,21 @@ class MyBot(commands.Bot):
         await self.wait_until_ready()
 
         ch = self.get_channel(965308897256702046)
-        await ch.send(f"Logged in as {self.user}")
+        await ch.send('Bot is online!')
+
+    async def on_error(self, event_method: str, /, *args, **kwargs) -> None:
+
+        print("Error sending!")
+        errors_channel = self.get_channel(965762182124011541)
+        embed = discord.Embed(
+            title=':x: Bot Error!',
+            color=discord.Color.magenta()
+        )
+
+        embed.add_field(name="Event", value=event_method)
+        embed.description = '```py\n{}\n```'.format(traceback.format_exc())
+        embed.timestamp = datetime.utcnow()
+        await errors_channel.send(embed=embed)
 
     async def setup_hook(self):
         # Loading all the cogs in the /cogs folder
@@ -85,5 +101,4 @@ if __name__ == '__main__':
     keep_alive()
 
     bot = MyBot()
-    print('hi')
     bot.run()
